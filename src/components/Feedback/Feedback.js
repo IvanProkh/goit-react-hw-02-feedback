@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 // import css from './Feedback.css';
 
 class Feedback extends Component {
+  // static defaultProps = {
+  //   value: 0,
+  // };
+  // static propTypes = {};
+
   state = {
     good: 0,
     neutral: 0,
@@ -10,17 +15,15 @@ class Feedback extends Component {
     positiveFeedback: 0,
   };
 
-  handleFeedbackGood = () => {
-    this.setState(prevState => {
-      return {
-        good: this.state.good + 1,
-      };
-    });
+  handleIncrementGood = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
 
     console.log(this.state);
   };
 
-  handleFeedbackNeutral = () => {
+  handleIncrementNeutral = () => {
     this.setState({
       neutral: this.state.neutral + 1,
     });
@@ -28,7 +31,7 @@ class Feedback extends Component {
     console.log(this.state);
   };
 
-  handleFeedbackBad = () => {
+  handleIncrementBad = () => {
     this.setState({
       bad: this.state.bad + 1,
     });
@@ -36,11 +39,11 @@ class Feedback extends Component {
     console.log(this.state);
   };
 
-  countTotalFeedback = ({ good, neutral, bad }) => {
+  countTotalFeedback = () => {
     this.setState({
       total: this.state.good + this.state.neutral + this.state.bad,
     });
-    console.log(this.state);
+    console.log('плюс');
   };
 
   countPositiveFeedbackPercentage = () => {};
@@ -49,13 +52,19 @@ class Feedback extends Component {
     return (
       <div>
         <h1>Please leave feedback</h1>
-        <button type="button" onClick={this.handleFeedbackGood}>
+        <button
+          type="button"
+          onClick={() => {
+            this.handleIncrementGood();
+            this.countTotalFeedback();
+          }}
+        >
           Good
         </button>
-        <button type="button" onClick={this.handleFeedbackNeutral}>
+        <button type="button" onClick={this.handleIncrementNeutral}>
           Neutral
         </button>
-        <button type="button" onClick={this.handleFeedbackBad}>
+        <button type="button" onClick={this.handleIncrementBad}>
           Bad
         </button>
         <h2>Statistics</h2>
