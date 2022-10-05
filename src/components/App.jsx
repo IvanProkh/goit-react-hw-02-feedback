@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Box } from './App.styled';
 
 import Statistics from './Statistics/Statistics';
 import Section from './Section/Section';
@@ -36,7 +37,7 @@ class App extends Component {
     const positivePercentage = countPositiveFeedbackPercentage(total);
 
     return (
-      <div>
+      <Box>
         <Section title="Please leave your feedback">
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
@@ -57,7 +58,7 @@ class App extends Component {
             <h2>There is no feedback</h2>
           )}
         </Section>
-      </div>
+      </Box>
     );
   }
 }
