@@ -11,22 +11,25 @@ class Feedback extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
-    positiveFeedback: 0,
   };
 
   handleIncrementGood = () => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
+      // good: prevState.good + 1,
     }));
+    // console.log(this.state);
 
-    console.log(this.state);
+    this.setState(prevState => {
+      console.log(prevState);
+
+      return { good: prevState.good + 1 };
+    });
   };
 
   handleIncrementNeutral = () => {
-    this.setState({
-      neutral: this.state.neutral + 1,
-    });
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+    }));
 
     console.log(this.state);
   };
@@ -40,24 +43,27 @@ class Feedback extends Component {
   };
 
   countTotalFeedback = () => {
-    this.setState({
-      total: this.state.good + this.state.neutral + this.state.bad,
-    });
+    this.setState(prevState => ({
+      total: prevState.good + prevState.neutral + prevState.bad,
+    }));
     console.log('плюс');
   };
 
   countPositiveFeedbackPercentage = () => {};
 
   render() {
+    const total = this.state.good + this.state.neutral + this.state.bad;
     return (
       <div>
         <h1>Please leave feedback</h1>
         <button
           type="button"
-          onClick={() => {
-            this.handleIncrementGood();
-            this.countTotalFeedback();
-          }}
+          // onClick={() => {
+          //   this.handleIncrementGood();
+          //   this.countTotalFeedback();
+          // }}
+          onClick={this.handleIncrementGood}
+          onChange={this.countTotalFeedback}
         >
           Good
         </button>
@@ -71,7 +77,7 @@ class Feedback extends Component {
         <p>Good: {this.state.good}</p>
         <p>Neutral: {this.state.neutral}</p>
         <p>Bad: {this.state.bad}</p>
-        <p>Total: {this.state.total}</p>
+        <p>Total: {total}</p>
         <p>Positive feedback: {this.state.positiveFeedback}%</p>
       </div>
     );
