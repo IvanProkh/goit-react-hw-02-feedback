@@ -18,7 +18,7 @@ export const Box = styled.div`
   &:hover {
     background: #753bbd;
     color: white;
-    transition: opacity 0.45s ease, transform 0.5s ease;
+    transition: opacity 0.45s ease, transform 0.1s ease;
     transform: scale(1.02);
   }
 `;
