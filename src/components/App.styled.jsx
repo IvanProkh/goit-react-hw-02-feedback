@@ -16,8 +16,9 @@ export const Box = styled.div`
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
   &:hover {
-    background: #753BBD;
+    background: #753bbd;
     color: white;
-    transition: opacity .45s ease, transform .5s ease;
+    transition: opacity 0.45s ease, transform 0.5s ease;
     transform: scale(1.02);
+  }
 `;
